@@ -44,3 +44,28 @@ function update() {
         }
     });
 }
+
+
+
+// Range slider function
+
+const range = document.getElementById('range');
+const result = document.getElementById('result');
+const total = document.getElementById('total');
+const display = document.getElementById('display');
+
+
+let totalResult = 0;
+
+result.innerHTML = range.value;
+
+
+
+range.addEventListener('input', ()=>{
+    const val = Number(range.value);  
+    result.innerHTML = val;
+    const finalSum = val + totalResult;
+    total.value = finalSum;
+    display.innerText = finalSum;
+});
+
