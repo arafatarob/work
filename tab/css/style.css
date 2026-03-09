@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background: #6eddef;
+}
+.tab-container{
+    width: 600px;
+    height: 100%;
+    background: #fff;
+    padding: 20px;
+}
+.button .tab{
+    width: 100px;
+    height: 30px;
+    text-transform: capitalize;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: #6eddef;
+    cursor: pointer;
+}
+.tabs{
+    display: none;
+}
+
+.button .tab.active{
+    background-color: #fff;
+    color:#000;
+}
