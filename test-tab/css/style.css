@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+}
+
+.tab-container{
+    width: 650px;
+    padding: 20px;
+    background: #dd2d4a;
+    border-radius: 6px;
+}
+
+.tabLink{
+    border: none;
+    outline: none;
+    background: #8494FF;
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    border-radius: 4px  4px 0 0;
+    cursor: pointer;
+}
+
+.tabLink.active{
+    background: #fff;
+    color: #000;
+}
+
+.tabContent{
+    background: #fff;
+    color: #000;
+    padding: 8px 20px;
+    display: none;
+}
