@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid</title>
+    <style>
+        .container{
+            display: grid;
+            grid-template-columns: repeat(3, 33%);
+            grid-template-rows: repeat(3, 300px);
+            grid-gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="items item1" style="background-color: red;">1</div>
+        <div class="items item2" style="background-color: blue;">2</div>
+        <div class="items item3" style="background-color: green;">3</div>
+        <div class="items item4" style="background-color: yellow;">4</div>
+        <div class="items item5" style="background-color: orange;">5</div>
+        <div class="items item6" style="background-color: purple;">6</div>
+        <!-- <div class="items item7" style="background-color: pink;">7</div>
+        <div class="items item8" style="background-color: cyan;">8</div> -->
+    </div>
+    
+</body>
+</html>
