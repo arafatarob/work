@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab bar</title>
+    <style>
+        .container{
+            background: #ccc;
+            width: 700px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .tabLink{
+            border: none;
+            outline: none;
+            background: blue;
+            color: white;
+            padding: 10px 40px;
+            cursor: pointer;
+            transition: 0.9s;
+            border-radius: 4px 4px 0 0;
+        }
+        .tab-container{
+            width: 670px;
+            background: #fff;
+            padding: 10px;
+        }
+        .tabContent{
+            display: none;
+        }
+        .tabLink.active{
+            background: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="tab-button">
+        <button class="tabLink" data-tab="tab1">
+            1
+        </button>
+        <button class="tabLink" data-tab="tab2">
+            2
+        </button>
+        <button class="tabLink" data-tab="tab3">
+            3
+        </button>
+        <button class="tabLink" data-tab="tab4">
+            4
+        </button>
+    </div>
+
+    <div class="tab-container">
+        <div class="tabContent" id="tab1"> tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati numquam nesciunt doloremque facere natus quaerat pariatur atque ea! Neque, magni! Necessitatibus quas ullam libero exercitationem excepturi corrupti officiis quaerat quis neque, iste dignissimos officia vero. Incidunt ea voluptas assumenda, itaque eveniet deleniti sapiente cum fugit ad corrupti similique ratione expedita Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat inventore praesentium fuga! Quod magnam dolorem non error esse dolores provident ipsa. Debitis explicabo laboriosam amet, sunt iusto unde totam distinctio similique veniam doloribus id nisi nemo? Maiores ratione dicta perferendis nam ipsa eum nesciunt facilis quod natus! Mollitia, a laboriosam!
+        </div>
+        <div class="tabContent" id="tab2"> tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati numquam nesciunt doloremque facere natus quaerat pariatur atque ea! Neque, magni! Necessitatibus quas ullam libero exercitationem excepturi corrupti officiis quaerat quis neque, iste dignissimos officia vero. Incidunt ea voluptas assumenda, itaque eveniet deleniti sapiente cum fugit ad corrupti similique ratione expedita Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum aut molestias necessitatibus aspernatur ullam veritatis illum accusamus? Quo a corrupti sapiente. Nesciunt soluta neque consectetur iure minus, voluptatum impedit error nobis nostrum saepe deleniti magnam cupiditate accusantium ducimus architecto debitis temporibus atque exercitationem repellat ex eveniet doloremque. Labore, nulla! Doloremque, dolorum odio! Fugiat non ipsam repellat optio quo. Molestiae neque ullam nostrum voluptatem iste amet voluptatum, architecto quidem nemo. In, nihil deserunt dolor eligendi facere consequatur architecto accusantium? Obcaecati error nihil, tempora nobis atque aspernatur eos corporis maiores commodi cumque quaerat, laudantium illum inventore consequuntur! Repudiandae quae asperiores voluptatem at?
+        </div>
+        <div class="tabContent" id="tab3"> tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati numquam nesciunt doloremque facere natus quaerat pariatur atque ea! Neque, magni! Necessitatibus quas ullam libero exercitationem excepturi corrupti officiis quaerat quis neque, iste dignissimos officia vero. Incidunt ea voluptas assumenda, itaque eveniet deleniti sapiente cum fugit ad corrupti similique ratione expedita Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, deleniti esse fuga maiores magni sunt delectus sint alias, sequi, numquam modi consectetur distinctio nulla. At provident, eaque sapiente facilis debitis nisi eveniet recusandae, dolores laudantium, voluptas rerum voluptatibus nemo! In consequuntur sint consectetur inventore! Iure ad quia, totam iste quas, nobis deserunt dicta excepturi quaerat nam amet dolorem error esse aut quibusdam eaque. Ad vitae dolorum enim at nulla rerum ratione doloribus? Nulla ducimus, beatae sequi maxime nam dolore amet unde, eveniet ipsa consequuntur, culpa ea hic tempore! Assumenda beatae at perspiciatis aspernatur animi. Accusamus officia laudantium maxime quis eligendi laboriosam sequi cumque, facere ea temporibus suscipit debitis harum veniam, vitae odio voluptate corporis provident unde, maiores at explicabo! Aliquam non quidem asperiores tempore reiciendis eligendi officiis consequuntur excepturi aspernatur vitae saepe veniam perferendis cupiditate exercitationem laudantium commodi, a corporis earum explicabo expedita eos id deserunt laborum. Omnis, magnam at.
+        </div>
+        <div class="tabContent" id="tab4"> tab 4 Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati numquam nesciunt doloremque facere natus quaerat pariatur atque ea! Neque, magni! Necessitatibus quas ullam libero exercitationem excepturi corrupti officiis quaerat quis neque, iste dignissimos officia vero. Incidunt ea voluptas assumenda, itaque eveniet deleniti sapiente cum fugit ad corrupti similique ratione expedita Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis sunt similique porro a laborum minus, quidem eligendi autem nisi harum officia corporis error ab sed ratione voluptatibus magni atque quibusdam exercitationem nam! Magni possimus, eius sed fuga minus, sunt culpa itaque harum, debitis animi distinctio omnis exercitationem natus cumque facere excepturi? Quos, illum doloribus iste modi at animi tenetur, amet voluptatem consectetur voluptates nihil ratione eaque, quasi voluptate? Magni, facilis ipsam ab distinctio vel nisi est recusandae earum vero soluta temporibus, libero sint fugiat iure dolorum. Doloribus qui animi, pariatur tempora aliquid cupiditate itaque iure ipsum enim perspiciatis cumque et hic quidem rerum sapiente possimus veniam odio rem ipsa. Consequuntur ipsa aut aspernatur consectetur? Voluptas unde id repudiandae, quam odio magnam odit sunt sint earum ad atque velit labore modi laboriosam provident dolor vitae optio eligendi, necessitatibus ab quaerat praesentium, eum deleniti corporis! Autem minus, deserunt expedita explicabo ullam alias, vel exercitationem modi magnam, nisi molestiae at vitae deleniti dignissimos accusantium voluptate assumenda. Assumenda, sapiente aspernatur quasi illum cum asperiores quia laboriosam enim exercitationem provident beatae deserunt est aut ut rerum eius deleniti nesciunt vero distinctio excepturi corporis quis optio autem. Reiciendis ratione obcaecati cumque placeat porro quo! Architecto, minus!
+        </div>
+    </div>
+    </div>
+    
+
+    <script>
+        const tabLinks = document.querySelectorAll('.tabLink');
+
+        for (var i = 0; i < tabLinks.length; i++) {
+
+            tabLinks[i].addEventListener('click', function(){
+            var tabs = this.dataset.tab;
+            var tabContants = document.getElementById(tabs);
+
+            var allButton = document.querySelectorAll('.tabLink');
+            var allContent = document.querySelectorAll('.tabContent');
+
+            for(var k = 0; k < allButton.length; k++){
+                allButton[k].classList.remove('active');
+            }
+
+            for(var j = 0; j < allContent.length; j++){
+                allContent[j].style.display = 'none';
+            }
+
+            tabContants.style.display = 'block';
+            this.classList.add('active');
+            });
+        }
+
+        document.querySelector('.tabLink').click();
+
+    </script>
+</body>
+</html>
