@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>online status check</title>
+    <style>
+        #status{
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            background-color: #ccc;
+        }
+        #status.online{
+            background-color: green;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="status" class="online"></div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const statusElement = document.getElementById('status'); 
+             
+            function updateStatus(){
+                if(navigator.onLine){
+                    statusElement.classList.add('online');
+                }else{
+                   statusElement.classList.remove('online');
+                }
+            }
+            window.addEventListener("online", updateStatus);
+            window.addEventListener("offline", updateStatus);
+
+            
+        });
+    </script>
+</body>
+</html>
