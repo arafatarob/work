@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>toggle theme</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        #toggle{
+            opacity: 0;
+            height: 0;
+            width: 0;
+        }
+        .toggle-item{
+            position: relative;
+            margin-top: 50px;
+        }
+        .slider{
+            position: absolute;
+            width: 65px;
+            height: 35px;
+            background-color: #ccc;
+            border-radius: 23px;
+            transition: 0.6s;
+            cursor: pointer;
+        }
+        .slider::before{
+            content: "";
+            position: absolute;
+            width: 23px;
+            height: 23px;
+            border-radius: 100%;
+            left: 4px;
+            top: 6px;
+            background-color: #000;
+            transition: 0.6s;
+        }
+
+        input:checked + .slider{
+            background: blue;
+        }
+        input:checked + .slider::before{
+            transform: translateX(32px);
+            background-color: #fff;
+        }
+
+        .dark{
+            background-color: #000;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="text">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum officia in aperiam porro possimus veritatis sed corrupti cupiditate quam sint nemo repellendus, facere modi odio maxime numquam corporis ipsa molestiae? Odio possimus culpa aspernatur suscipit eligendi enim eius unde tempora nam mollitia deleniti voluptatibus, totam ipsa impedit facilis, natus error laboriosam hic, libero aliquid sequi dignissimos blanditiis. Ex amet obcaecati, asperiores accusantium temporibus consequatur. Iusto, rem? Repellendus quisquam, inventore tenetur tempora commodi quidem! Ratione a nulla, optio, sapiente obcaecati assumenda quod non expedita labore vel porro earum eos omnis dolorum amet officiis, qui officia nemo corrupti et eaque. Temporibus nostrum sapiente eaque quos maxime, vel quod assumenda alias adipisci harum aspernatur, impedit similique a quae. Rerum quasi, est libero quod sunt delectus deserunt quaerat totam impedit porro sint inventore et distinctio doloribus enim quos necessitatibus voluptas veniam rem? Ullam ea molestiae fuga nisi? Reiciendis et blanditiis cumque corrupti distinctio numquam inventore a, dolorum, nihil esse provident. Tempore quod nobis minus exercitationem aliquam optio et unde quam modi aspernatur voluptatibus beatae odit vitae corrupti, hic eum omnis, atque ea magni! Voluptatem consectetur esse dolorem maiores animi sapiente minima deleniti quia suscipit sit laboriosam eligendi facere, enim doloremque aliquid reprehenderit provident quibusdam?
+    
+    </div>
+
+    <div class="toggle-wrapper">
+        <label class="toggle-item">
+            <input type="checkbox" id="toggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+
+    <script>
+        const toggle = document.getElementById('toggle');
+        const body = document.body;
+
+        toggle.addEventListener('change', ()=>{
+            body.classList.toggle('dark');
+        });
+
+        if(body.classList.contains === 'dark'){
+            localStorage.setItem('theme', 'dark');
+        }else{
+            localStorage.setItem('theme', 'light');
+        }
+
+        if (localStorage.getItem.contains === 'dark') {
+            body.classList.add('dark');
+            toggle.checked = true;
+        }
+    </script>
+</body>
+</html>
