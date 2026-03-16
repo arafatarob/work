@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Toggle</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* সাধারণ লাইট মোড স্টাইল */
+body {
+    background-color: #ffffff;
+    color: #333333;
+    font-family: Arial, sans-serif;
+    transition: background 0.3s, color 0.3s; /* মসৃণ পরিবর্তনের জন্য */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* ডার্ক মোড স্টাইল (যখন এই ক্লাসটি বডিতে থাকবে) */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
+
+/* সুইচ বা টগলের ডিজাইন */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px; width: 26px;
+    left: 4px; bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ডার্ক মোড টেস্ট</h1>
+        <p>নিচের সুইচটি টিপে মোড পরিবর্তন করুন।</p>
+        
+        <label class="switch">
+            <input type="checkbox" id="toggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <script>
+        const toggle = document.getElementById('toggle');
+const body = document.body;
+
+// ১. ক্লিক করলে মোড পরিবর্তন করা
+toggle.addEventListener('change', () => {
+    body.classList.toggle('dark-mode');
+
+    // পছন্দের মোড ব্রাউজারে সেভ করা
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+// ২. পেজ লোড হওয়ার সময় আগের সেভ করা মোড চেক করা
+if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+    toggle.checked = true;
+}
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

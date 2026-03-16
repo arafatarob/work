@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>dark theme</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body.darkMode{
+            background: #000;
+            color: #fff;
+        }
+        .switch{
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: inline-block;
+        }
+        .switch input{
+            opacity: 0;
+            height: 0;
+            width: 0;
+        }
+        .slider{
+            position: absolute;
+            left: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            width: 90px;
+            height: 40px;
+            background-color: #ccc;
+            border-radius: 28px;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        .slider::before {
+    content: "\f699";
+    position: absolute;
+    left: 4px;
+    bottom: 8px;
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    transition: 0.4s;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+}
+
+        input:checked + .slider{
+            background: #2196F3;
+        }
+        input:checked + .slider::before{
+            transform: translateX(53px);
+            content: "\f185";
+            color: #fff;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="items">
+        <ul>
+            <li><a href="">item1</a></li>
+            <li><a href="">item2</a></li>
+            <li><a href="">item3</a></li>
+            <li><a href="">item4</a></li>
+            <li><a href="">item5</a></li>
+        </ul>
+    </div>
+
+    <div>
+        item1
+    </div>
+
+    <h2>switch item</h2>
+    <label class="switch">
+        <input type="checkbox" id="toggle">
+        <span class="slider"></span>
+    </label>
+    
+    <script>
+        const toggle =  document.getElementById('toggle');
+        const body =  document.body;
+
+        toggle.addEventListener('change', ()=>{
+            body.classList.toggle('darkMode');
+
+            if(body.classList.contains === 'darkMode'){
+                localStorage.setItem('theme', 'darkMode');
+            }else{
+                localStorage.setItem('theme', 'lightMode');
+            }
+
+            if(localStorage.setItem('theme') === 'darkMode'){
+                body.classList.add('darkMode');
+                toggle.checked = true;
+            }
+        });
+        
+    </script>
+    
+</body>
+</html>
