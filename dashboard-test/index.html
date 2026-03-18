@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        :root{
+            --background-color: #07553b;
+            --box-shadow: 6px 0px 15px rgba(1, 167, 124, 0.4),
+    -6px 0px 15px rgba(1, 167, 124, 0.32);
+        --border-color: 1px solid #06d6a0;
+            --back-color: #08f4b7;
+        }
+
+        body{
+            background: var(--background-color);
+            height: 100vh;
+            transition: background 0.6s ease-in;
+        }
+        .header{
+            background-color: var(--back-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            max-width: 100%;
+            height: 60px;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        .logo {
+            width: 20%;
+            height: 100%;
+        }
+        .logo a{
+            color: #000;
+            text-decoration: none;
+            font-size: 25px;
+            line-height: 60px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .logo a.white{
+            color: #fff !important;
+        }
+        .color{
+            color: #fff !important;
+        }
+        .rightSide{
+            width: 80%;
+            height: 100%;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            gap: 0;
+        }
+        .darkMode{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            height: 100%;
+            cursor: pointer;
+        }
+        #mode input{
+            width: 0;
+            height: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .slider{
+            position: absolute;
+            width: 75px;
+            height: 35px;
+            background: #ccc;
+            border-radius: 25px;
+            top: 12px;
+            right: 0;
+            cursor: pointer;
+            transition: 0.6s;
+        }
+        .slider::before{
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 100%;
+            background: #fff;
+            top: 4.5px;
+            left: 4px;
+            transition: 0.6s;
+        }
+
+        #toggle:checked + .slider{
+            background: var(--background-color);
+        }
+        #toggle:checked + .slider::before{
+            transform: translateX(40px);
+        }
+        
+        .profile{
+            width: 5%;
+            display: flex;
+            justify-content: end;
+            position: relative;
+        }
+        .activeIcon{
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #ccc;
+            border-radius: 100%;
+            bottom: 0;
+            right: 0;
+        }
+        .activeIcon.online{
+            background: green;
+        }
+        .dark{
+            background: #000 !important;
+            transition: background 0.6s ease-in;
+        }
+        .profile img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }   
+
+
+
+        .side-bar{
+            background-color: var(--back-color);
+            position: fixed;
+            top: 60px;
+            left: 0;
+            bottom: 0;
+            max-width: 10%;
+            width: 100%;
+            height: 100vh;
+            box-shadow: var(--box-shadow);
+        }
+
+        .side-bar ul{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .side-bar ul li{
+            font-size: 20px;
+            padding: 8px 20px;
+            color: #000;
+        }
+        .side-bar ul li:hover{
+            background-color: var(--background-color);
+            color: #fff;
+            cursor: pointer;
+        }
+        .side-bar ul li.active{
+            background-color: var(--background-color);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .main-bar {
+            padding-top: 70px;
+            padding-left: 216px;
+            color: #fff;
+        }
+        .mainContent{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <a href="#">Arafat</a>
+            </div>
+            <div class="rightSide">
+                <div class="darkMode">
+                    <label id="mode">
+                        <input type="checkbox" id="toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="profile">
+                    <img src="./img/profile.jpg" alt="">
+                    <div class="activeIcon online"></div>
+                </div>
+            </div>
+        </div>
+        <div class="side-bar">
+            <ul>
+                <li class="sideMenu" data-tab="content1">Overview</li>
+                <li class="sideMenu" data-tab="content2">Service</li>
+                <li class="sideMenu" data-tab="content3">Pipeline</li>
+                <li class="sideMenu" data-tab="content4">AI</li>
+            </ul>
+        </div>
+        <div class="main-bar">
+            <div id="content1" class="mainContent">Overview <br><br>
+
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo similique nesciunt quas in nostrum quia. Eos earum quaerat quae quod perferendis, sequi ad nostrum nobis facilis velit voluptates odit maiores cupiditate sunt assumenda dolorum. Unde laboriosam numquam quo error totam deserunt explicabo nisi. Earum expedita vel et pariatur provident impedit obcaecati placeat, voluptas vero deleniti fugiat repudiandae animi iusto! Error sed hic consectetur deserunt inventore blanditiis molestias veritatis nisi. Excepturi velit ducimus eaque, vel est dolor culpa unde quam voluptates adipisci iure cupiditate aliquam voluptate porro debitis. Quis laborum ipsa dolores itaque exercitationem maiores, reprehenderit beatae ipsam necessitatibus corrupti fugit.
+            </div>
+            <div id="content2" class="mainContent">Service <br><br>
+
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente corrupti unde excepturi, ea et hic? Cumque aperiam ab, ullam ipsum expedita inventore repudiandae qui aliquid ratione est magnam obcaecati at sapiente, laborum unde dolore repellendus assumenda accusamus esse eligendi! Perspiciatis doloremque repellat, natus iure accusantium dolore! Exercitationem aliquam hic tenetur! Odio, nam, magnam, modi reiciendis ab ad sit aut et asperiores dolore libero sapiente alias fuga sequi iusto! Ullam, soluta velit. Ratione voluptatibus, incidunt quidem quisquam laborum atque neque quam aliquid tempore sapiente, repellendus, similique quas quos tenetur. Suscipit, sequi consequatur magnam totam dignissimos culpa vero, inventore minus nostrum delectus maxime neque? Consequatur est magni provident ab deleniti reprehenderit quae eaque distinctio libero repellendus placeat, debitis neque iusto unde esse molestiae perferendis, omnis saepe accusantium perspiciatis nam deserunt dolore consectetur. Eveniet placeat quas fugit, distinctio vel necessitatibus tempora dolorem quae tenetur odio rerum. Nisi corrupti molestias quae inventore ipsum consequatur!
+            </div>
+            <div id="content3" class="mainContent">Pipeline <br><br>
+
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, commodi incidunt mollitia totam neque sint nihil distinctio nulla quibusdam rem hic voluptatum cum quos quas! Possimus, consectetur quod architecto atque expedita molestiae animi dolores tempora debitis accusamus porro eligendi veritatis quisquam alias quia. Eum, alias repellat. Modi eius dicta deserunt reiciendis omnis impedit rerum sequi architecto eveniet quidem esse nulla quod exercitationem quo id aperiam, dolore molestias ratione quasi aliquam explicabo. Nulla corrupti illo maiores deleniti vitae ratione expedita perspiciatis dolor magni tempora voluptas quam culpa tempore rem, odit doloribus praesentium! Odio facere atque accusantium amet expedita quidem fugiat cupiditate, unde beatae suscipit vero libero neque ab dicta culpa, modi, eos ipsum est voluptatibus! Illo quas molestiae ex obcaecati dolore modi labore nemo. Qui praesentium saepe aspernatur quas libero repellendus animi aliquid magni consequatur dolor nostrum, incidunt cumque a quia quo consequuntur aperiam cum ea fugit maiores fugiat, nihil voluptatum optio! Veritatis ex reprehenderit blanditiis labore corporis tenetur eos vel quaerat! Temporibus quo molestiae amet odit autem vitae est aliquid, minima ipsam doloremque cupiditate deserunt dignissimos cum maiores. Incidunt ut harum voluptates esse nisi, veniam fugit dolorem obcaecati quae similique consequatur repudiandae temporibus quos voluptas minima neque explicabo, aperiam rem.
+            </div>
+            <div id="content4" class="mainContent">AI <br><br>
+
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum nulla veritatis laborum minus aliquam magnam? Quaerat, libero deserunt id iure qui veritatis harum aperiam modi atque ea? Dignissimos nisi consequuntur provident, fugit, delectus nulla modi ipsa inventore suscipit iure aspernatur. Quos nam temporibus atque dicta rem accusamus repellendus quis mollitia nulla ut omnis cumque quo, rerum perferendis autem molestiae beatae quasi magni minus quia excepturi amet commodi! Sunt hic amet possimus soluta. Officia distinctio voluptates, illum delectus incidunt deserunt dolores illo, fuga deleniti nihil, unde architecto eum. Maiores corrupti, autem sed aliquam in sapiente repudiandae at quaerat! Ad molestias, commodi numquam, odio optio error cum explicabo cumque ea repellendus at ratione vero quisquam! Error illo mollitia unde, similique neque accusantium facilis! Quam qui officiis voluptas expedita ipsa quasi asperiores fuga blanditiis! Labore similique, sit voluptas odit saepe velit fugit, qui non architecto neque aperiam, alias aut magni quos veniam omnis vitae quisquam dolore possimus. Dolorem earum provident explicabo exercitationem rem, alias veritatis nisi minus in similique placeat sapiente asperiores odio id soluta quaerat aliquid hic doloremque quos doloribus. Consequuntur accusantium dignissimos inventore eligendi deleniti voluptatum atque et, libero eaque eveniet odit nemo officiis quis obcaecati laboriosam a ut autem id suscipit tenetur aut veniam aperiam. Consectetur numquam repudiandae suscipit unde, eos debitis officiis similique nisi tenetur commodi cumque nam veritatis cupiditate possimus vitae porro! Non pariatur doloribus nesciunt quas natus, ex earum cumque dignissimos, iste, suscipit sapiente atque voluptates est temporibus explicabo quibusdam ad consectetur illo a sint nihil facere?
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // dark mode
+        
+        const toggle = document.getElementById('toggle');
+        const text = document.querySelector('.logo a');
+        const body = document.body;
+        const header = document.querySelector('.header');
+        const sideBar = document.querySelector('.side-bar');
+        const sideMenu = document.querySelectorAll('.sideMenu');
+
+        toggle.addEventListener('change', function(){
+            body.classList.toggle('dark');
+
+
+            if(body.classList.contains === 'dark'){
+                localStorage.setItem('theme', 'dark');
+            }else{ 
+                localStorage.setItem('theme', 'light');
+            }
+
+            if(localStorage.getItem('theme') === 'dark'){
+                body.classList.add('dark');
+                toggle.checked = true;
+            }
+        });
+
+
+        // active bar
+
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const activeBar = document.querySelector('.activeIcon');
+
+            function updateStatus(){
+                if(navigator.onLine){
+                    activeBar.classList.add('online');
+                }else{
+                    activeBar.classList.remove('online');
+                }
+            }
+            window.addEventListener('online', updateStatus);
+            window.addEventListener('offline', updateStatus);
+        });
+
+
+
+
+        // side bar and main background
+
+        const navLink = document.querySelectorAll('.sideMenu');
+
+        for(var i = 0; i < navLink.length; i++){
+            navLink[i].addEventListener('click', function(){
+                var navId = this.dataset.tab;
+                var navContent = document.getElementById(navId);
+
+                const allTab = document.querySelectorAll('.sideMenu');
+                const allContent = document.querySelectorAll('.mainContent');
+
+                for(var j = 0; j < allTab.length; j++){
+                    allTab[j].classList.remove('active');
+                }
+                for(var k = 0; k < allContent.length; k++){
+                    allContent[k].style.display = 'none';
+                }
+
+                navContent.style.display = 'block';
+                this.classList.add('active');
+            });
+        }
+        document.querySelector('.sideMenu').click();
+    </script>
+    
+</body>
+</html>
