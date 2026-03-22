@@ -1,0 +1,102 @@
+<html>
+<head>
+    <title>My Web Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <style>
+        body{
+            background: url(rounded.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .glass {
+    width: 300px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+        .glass form{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .glass form input{
+            background: rgba(255, 255, 255,0.2);
+            border: none;
+            outline: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button{
+            background: #fff;
+            border: none;
+            padding: 10px 40px;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+        .password-box{
+            position: relative;
+            cursor: pointer;
+        }
+.password-box i {
+    position: absolute;
+    right: 0px;
+    top: 0;
+    background: #fff;
+    padding: 9.5px 10px;
+    border-radius: 0 5px 5px 0;
+}
+    </style>
+    <body>
+        
+
+        <div class="glass">
+            <form action="">
+                <h1>Login</h1>
+                <input type="text" placeholder="Username">
+
+                <div class="password-box">
+                    <input type="password" placeholder="Password">
+                    <i class="fa-regular fa-eye-slash"></i>
+                </div>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+
+        <script>
+            const passwordInput  = document.querySelector('.password-box input');
+            const eyeIcon  = document.querySelector('.password-box i');
+
+            eyeIcon.addEventListener('click', function(e){
+                e.preventDefault();
+                if(passwordInput.type === 'password'){
+                    passwordInput.type = 'text';
+                    eyeIcon.classList.add('fa-eye');
+                    eyeIcon.classList.remove('fa-eye-slash');
+                }
+                else{
+                    passwordInput.type = 'password';
+                    eyeIcon.classList.remove('fa-eye');
+                    eyeIcon.classList.add('fa-eye-slash');
+                }
+            });
+        </script>
+    
+
+    </body>
+</html>
