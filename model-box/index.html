@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>model box</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .confirm-box{
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: url(rounded.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+        }
+        .confirm-box::before{
+            content: "";
+            position: absolute;
+            background-color: #000;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 0.4;
+            z-index: -1;
+        }
+        .message-box{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            backdrop-filter: blur(8px);
+        }
+        .message-box h2{
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            background-clip: text;
+            font-size: 24px;
+            display: inline-block;
+            position: relative;
+            padding: 10px 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+        }
+        .button-box{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 50%;
+            margin-top: 30px;
+        }
+        button{
+            border: 1px solid #ccc;
+            padding: 5px 30px;
+            background: #000;
+            color: #fff;
+            text-transform: uppercase;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome in web-page</h1>
+
+    <button onclick="showConfirm('are you sure')">click me!</button>
+    
+
+    <script>
+        
+
+        function showConfirm(message){
+            var confirmBox = document.createElement('div');
+            confirmBox.classList.add('confirm-box');
+
+            var messageBox = document.createElement('div');
+            messageBox.classList.add('message-box');
+
+            var messageContent = document.createElement('h2');
+            messageContent.classList.add('message');
+            messageContent.style.textAlign = 'center';
+            messageContent.style.textTransform = 'uppercase';
+
+            var buttonBox = document.createElement('div');
+            buttonBox.classList.add('button-box');
+
+            var buttonNext = document.createElement('button');
+            buttonNext.classList.add('buttonNext');
+
+            var buttonPrev = document.createElement('button');
+            buttonPrev.classList.add('buttonPrev');
+
+            
+            confirmBox.appendChild(messageBox);
+            document.body.appendChild(confirmBox);
+            messageBox.appendChild(messageContent);
+            messageContent.innerText = message;
+
+            
+            buttonBox.appendChild(buttonPrev);
+            buttonBox.appendChild(buttonNext);
+            buttonPrev.innerHTML = 'yes';
+
+            messageBox.appendChild(buttonBox);
+            buttonNext.innerHTML = 'no';
+
+
+
+             const prevEl = document.querySelector('.buttonPrev');
+        const nextEl = document.querySelector('.buttonNext');
+        const box = document.querySelector('.confirm-box');
+
+        prevEl.addEventListener('click', function(e){
+            e.preventDefault();
+            box.remove();
+        });
+
+
+        nextEl.addEventListener('click', function(e){
+            e.preventDefault();
+            box.remove();
+        });
+        }
+
+
+       
+
+
+    </script>
+</body>
+</html>

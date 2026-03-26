@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>card</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card-container{
+            position: relative;
+            width: 800px;
+            height: 800px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            background-color: deepskyblue;
+            transform: perspective(1000px);
+        }
+        .card-inner{
+            position: relative;
+            transform-style: preserve-3d;
+            width: 100%;
+            height: 100%;
+            transition: 0.6s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-container:hover .card-inner{
+            transform: rotateY(180deg);
+        }
+
+        .front{
+            position: absolute;
+            width: 300px;
+            height: 500px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            background-color: blue;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        .back{
+            position: absolute;
+            width: 300px;
+            height: 500px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            background-color: lightcoral;
+            transform: rotateY(180deg);            
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="card-inner">
+            <div class="front">
+                Md Arafat Hossain
+            </div>
+            <div class="back">
+                Frontend developer
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>My Web Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <input type="text" name="name" placeholder="Enter your name" id="name">
+
+        <input type="button" value="send" id="click">
+
+
+        <div>
+            <h1 id="output">Hello, <span id="nameHere">Jhon</span></h1>
+        </div>
+
+        <script>
+
+            const click = document.getElementById('click');
+            const nameEl = document.getElementById('name');
+            const nameHere = document.getElementById('nameHere');
+
+            click.addEventListener('click', ()=>{
+
+                const name = nameEl.value;
+                nameHere.innerHTML = ` ${name}, Welcome to my web page!`;
+
+            });
+
+        </script>
+
+    </body>
+</html>
