@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+    <style>
+        .accordion-container {
+            width: 700px;
+            height: auto;
+            background: blue;
+            padding: 8px 30px;
+            border-radius: 10px;
+        }
+        .accordion-item{
+            background: rgba(255, 255, 255, 0.4);
+            margin: 10px 0 10px 0;
+            padding: 10px 10px;
+            border-radius: 5px;
+        }
+        .title{
+            font-size: 20px;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin: 0 0 10px 0;
+        }
+        .content{
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 10px;
+            display: none;
+        }
+        .accordion-item.active .content{
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="accordion-container">
+        <div class="accordion-item">
+            <div class="title">one</div>
+            <div class="content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem iusto nam blanditiis aut quo molestias magni, repellat quod ut accusantium?
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="title">two</div>
+            <div class="content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem iusto nam blanditiis aut quo molestias magni, repellat quod ut accusantium?
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="title">three</div>
+            <div class="content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem iusto nam blanditiis aut quo molestias magni, repellat quod ut accusantium?
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="title">four</div>
+            <div class="content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem iusto nam blanditiis aut quo molestias magni, repellat quod ut accusantium?
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const accordionItem = document.querySelectorAll('.accordion-item');
+
+        accordionItem.forEach(item=>{
+            const title = item.querySelector('.title');
+            const content = item.querySelector('.content');
+            title.addEventListener('click', function(){
+                for(var i = 0; i < accordionItem.length; i++){
+                    if(accordionItem[i] != item){
+                        accordionItem[i].classList.remove('active');
+                    }else{
+                        item.classList.toggle('active');
+                    }
+                }
+            });
+        });
+
+        document.querySelector('.title').click();
+    </script>
+    
+</body>
+</html>
