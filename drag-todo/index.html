@@ -1,0 +1,315 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DragDrop & Todo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0423;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .drag-container,
+        .todo-container {
+            width: 40%;
+            height: 80%;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                0 0 10px rgba(255, 255, 255, 0.5),
+                0 0 10px rgba(255, 255, 255, 0.5),
+                0 0 10px rgba(255, 255, 255, 0.5);
+            padding: 10px 50px;
+        }
+
+        .drag-container h2,
+        .todo-container h2 {
+            text-align: center;
+            font-size: 45px;
+            line-height: 100px;
+            color: #0b0423;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .todo-container h2 img {
+            width: 50px;
+            height: auto;
+            margin-left: 10px;
+        }
+
+        .dragList {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #leftBox,
+        #rightBox {
+            width: 40%;
+            border: 2px dashed #0b0423;
+            height: 510px;
+            padding: 10px;
+        }
+
+        .list {
+            height: 40px;
+            background: #e91e63;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            border-radius: 8px;
+            text-transform: capitalize;
+            padding: 0 0 0 10;
+            cursor: grab;
+            margin-bottom: 15px;
+        }
+
+        .list img {
+            width: 30px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        /* todo list */
+
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        #serachInput {
+            width: 100%;
+            height: 40px;
+            padding: 0 10px;
+            border-radius: 30px;
+            border: none;
+            outline: none;
+            background-color: #ccc;
+        }
+
+        #addBtn {
+            height: 40px;
+            padding: 10px 30px;
+            border-radius: 30px;
+            position: absolute;
+            right: 0;
+            border: none;
+            background: #0b0423;
+            color: #fff;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .listBox {
+
+            margin: 15px 10px 15px;
+        }
+
+        #listContainer li {
+    list-style-type: none;
+    font-size: 18px;
+    text-transform: capitalize;
+    padding: 5px 30px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 38px;
+}
+
+        #listContainer li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 7px;
+            font-size: 12px;
+            width: 22px;
+            height: 22px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            padding: 1px;
+        }
+
+        #listContainer li.checked {
+            text-decoration: line-through;
+            color: #ccc;
+        }
+
+        #listContainer li.checked::before {
+            content: "✔️";
+        }
+
+        span.close {
+            font-size: 12px;
+            position: absolute;
+            right: 0;
+            top: 10px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            padding: 6px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        span.close:hover {
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="drag-container">
+        <h2>Drag & Drop</h2>
+
+        <div class="dragList">
+            <div id="leftBox">
+                <div class="list" draggable="true">
+                    <img src="icon.png" draggable="false" alt=""> list item 1
+                </div>
+                <div class="list" draggable="true">
+                    <img src="icon.png" draggable="false" alt=""> list item 2
+                </div>
+                <div class="list" draggable="true">
+                    <img src="icon.png" draggable="false" alt=""> list item 3
+                </div>
+                <div class="list" draggable="true">
+                    <img src="icon.png" draggable="false" alt=""> list item 4
+                </div>
+                <div class="list" draggable="true">
+                    <img src="icon.png" draggable="false" alt=""> list item 5
+                </div>
+                <div class="list" draggable="true">
+                    <img src="icon.png" draggable="false" alt=""> list item 6
+                </div>
+                <div class="list" draggable="true">
+                    <img src="icon.png" draggable="false" alt=""> list item 7
+                </div>
+                <div class="list" draggable="true">
+                    <img src="icon.png" draggable="false" alt=""> list item 8
+                </div>
+                <div class="list" draggable="true">
+                    <img src="icon.png" draggable="false" alt=""> list item 9
+                </div>
+            </div>
+            <div id="rightBox"></div>
+        </div>
+
+    </div>
+    <div class="todo-container">
+        <h2>todo list <img src="todo.png" alt=""></h2>
+
+        <div class="search-box">
+            <input type="text" name="search" id="serachInput" placeholder="Add A Task">
+            <button id="addBtn" onclick="addTask()">Add</button>
+        </div>
+
+        <div class="listBox">
+            <h2>task list</h2>
+            <ul id="listContainer">
+                <!-- <li>list item 1</li>
+                <li>list item 2</li>
+                <li>list item 3</li> -->
+            </ul>
+        </div>
+
+    </div>
+
+
+    <script>
+        const lists = document.getElementsByClassName('list');
+        const leftBox = document.getElementById('leftBox');
+        const rightBox = document.getElementById('rightBox');
+        for (list of lists) {
+
+            list.addEventListener('dragstart', function (e) {
+                let selected = e.target;
+
+                rightBox.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                });
+                rightBox.addEventListener('drop', function (e) {
+                    rightBox.appendChild(selected);
+                    selected = null;
+                });
+                leftBox.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                });
+                leftBox.addEventListener('drop', function (e) {
+                    leftBox.appendChild(selected);
+                    selected = null;
+                });
+
+            });
+        }
+
+
+        const serachInput = document.getElementById('serachInput');
+        const addBtn = document.getElementById('addBtn');
+        const listContainer = document.getElementById('listContainer');
+
+        function addTask() {
+            if (serachInput.value === '') {
+                alert('please add a task');
+                saveTask()
+            } else {
+                const li = document.createElement('li');
+                li.innerHTML = serachInput.value;
+                listContainer.appendChild(li);
+
+                const span = document.createElement('span');
+                span.classList.add('close');
+                span.innerHTML = '❌';
+                li.appendChild(span);
+            }
+            serachInput.value = '';
+            saveTask()
+        }
+
+        listContainer.addEventListener('click', function (e) {
+            if (e.target.tagName === 'LI') {
+                e.target.classList.toggle('checked');
+                saveTask()
+            } else if (e.target.tagName === 'SPAN') {
+                e.target.parentElement.remove();
+                saveTask()
+            }
+        });
+
+        function saveTask() {
+            localStorage.setItem('data', listContainer.innerHTML)
+        }
+
+        function loadTask() {
+            listContainer.innerHTML = localStorage.getItem('data');
+        }
+
+        loadTask();
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>text to div</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background: #0b0423;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .todo-app{
+
+            width: 450px;
+            height: auto;
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px 40px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3),
+                        0 0 20px rgba(255, 255, 255, 0.3), 
+                        0 0 20px rgba(255, 255, 255, 0.3), 
+                        0 0 20px rgba(255, 255, 255, 0.3) 
+            ;
+
+        }
+        .todo-title h2{
+            font-size: 24px;
+            line-height: 40px;
+            display: flex;
+            align-items: center;
+        }
+        .todo-title h2 img{
+            width: 25px;
+            margin: 15px 10px 15px;
+
+        }
+        .todo-box{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        #inputItem{
+            width: 100%;
+            height: 40px;
+            border-radius: 40px;
+            border: none;
+            outline: none;
+            margin: 15px 0px 15px;
+            background: #ccc;
+            padding: 0 15px;
+        }
+        #addBtn{
+            width: 70px;
+            height: 40px;
+            border: none;
+            background-color: #e91e63;
+            color: #fff;
+            padding: 0 15px 0;
+            position: absolute;
+            right: 0;
+            border-radius: 40px;
+            text-transform: uppercase;
+        }
+.todo-containerr ul li {
+    list-style-type: none;
+    margin-bottom: 20px;
+    padding: 0 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 20px;
+    font-size: 16px;
+    line-height: 27px;
+    gap: 34px;
+    padding-left: 40px;
+    cursor: pointer;
+}
+        .todo-containerr ul li::before{
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 2px solid #555;
+            border-radius: 50%;
+            left: 0;
+            top: 0;
+            padding: 4px;
+        }
+        .todo-containerr ul li.checked{
+            text-decoration: line-through;
+            color: #ccc;
+        }
+        .todo-containerr ul li.checked::before{
+            content: "✔️";
+            background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+
+        }
+        .close{
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            position: absolute;
+            right: 0;
+        }
+        .close:hover{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="todo-app">
+        
+        <div class="todo-title">
+            <h2>Todo List <img src="todo.png" alt=""></h2>
+        </div>
+
+        <div class="todo-box">
+            <input type="text" name="todo" id="InputItem" placeholder="add a new task">
+            <button id="addBtn" onclick="addTodo()">add</button>
+        </div>
+
+        <div class="todo-containerr">
+            <ul id="todoList">
+                <!-- <li>list 1</li>
+                <li>list 2</li>
+                <li>list 3</li> -->
+            </ul>
+        </div>
+        
+    </div>
+
+
+    <script>
+        const inputItem = document.getElementById('InputItem');
+        const addBtn = document.getElementById('addBtn');
+        const todoList = document.getElementById('todoList');
+
+        function addTodo(){
+            if(inputItem.value === ''){
+                alert('enter a task');
+            }else{
+                const li = document.createElement('li');
+                li.innerHTML = inputItem.value;
+                todoList.appendChild(li);
+
+                const span = document.createElement('span');
+                span.classList.add('close');
+                span.innerHTML = '❌';
+                li.appendChild(span);
+            }
+
+            inputItem.value = '';
+            saveTodo();
+        }
+
+        todoList.addEventListener('click', function(e){
+            if(e.target.tagName === 'LI'){
+                e.target.classList.toggle('checked');
+                saveTodo();
+            }else if(e.target.tagName === 'SPAN'){
+                e.target.parentElement.remove();
+                saveTodo();
+            }
+        }, false);
+
+
+        function saveTodo(){
+            localStorage.setItem('data', todoList.innerHTML);
+        }
+
+        function getTodo(){
+            todoList.innerHTML = localStorage.getItem('data');
+        }
+        getTodo()
+    </script>
+    
+</body>
+</html>

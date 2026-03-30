@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drap and drop test</title>
+    <style>
+        body{
+            background: #0b0423;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            display: flex;
+            gap: 2rem;
+        }
+        #left, #right{
+            height: 28.5rem;
+            border: 2px dashed #fff;
+            padding: 1rem;
+            width: 17rem;
+        }
+        .list{
+            background-color: #e91e63;
+            border-radius: 6px;
+            padding: 0 1rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 10px;
+            cursor: grab;
+        }
+        .list img{
+            width: 3rem;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="left">
+            <div class="list" draggable="true"> 
+                <img src="icon.png" draggable="false" alt=""> list 1 
+            </div>
+            <div class="list" draggable="true"> 
+                <img src="icon.png" draggable="false" alt=""> list 2 
+            </div>
+            <div class="list" draggable="true"> 
+                <img src="icon.png" draggable="false" alt=""> list 3 
+            </div>
+            <div class="list" draggable="true"> 
+                <img src="icon.png" draggable="false" alt=""> list 4 
+            </div>
+            <div class="list" draggable="true"> 
+                <img src="icon.png" draggable="false" alt=""> list 5 
+            </div>
+            <div class="list" draggable="true"> 
+                <img src="icon.png" draggable="false" alt=""> list 6 
+            </div>
+            <div class="list" draggable="true"> 
+                <img src="icon.png" draggable="false" alt=""> list 7
+            </div>
+            <div class="list" draggable="true"> 
+                <img src="icon.png" draggable="false" alt=""> list 8 
+            </div>
+        </div>
+        <div id="right"></div>
+    </div>
+
+
+    <script>
+        const lists = document.getElementsByClassName('list');
+        const leftBox = document.getElementById('left');
+        const rightBox = document.getElementById('right');
+
+
+        for(list of lists){
+            list.addEventListener('dragstart', function(e){
+                let selected  = e.target;
+
+                rightBox.addEventListener('dragover', function(e){
+                    e.preventDefault();
+                });
+                rightBox.addEventListener('drop', function(e){
+                    rightBox.appendChild(selected);
+                    selected = null;
+                });
+
+
+                leftBox.addEventListener('dragover', function(e){
+                    e.preventDefault();
+                });
+                leftBox.addEventListener('drop', function(e){
+                    leftBox.appendChild(selected);
+                    selected = null;
+                });
+                
+            });
+        }
+
+    </script>
+    
+</body>
+</html>
