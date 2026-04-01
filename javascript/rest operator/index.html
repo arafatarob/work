@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rest operator</title>
+</head>
+<body>
+    
+
+    <script>
+        function sum(name, subject, ...num){
+            let sum = 0;
+
+            document.write(name + ' department of ' + subject + " Result is : " );
+
+            for(let i in num){
+                sum += num[i];
+            }
+            document.write(sum + '<br>')
+        }
+
+
+        sum('arob', "computer", 25, 12, 30);
+        sum('arafat', 'Civil', 100, 20)
+        
+    </script>
+</body>
+</html>

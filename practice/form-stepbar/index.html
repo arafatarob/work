@@ -1,0 +1,266 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step Bar</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .container{
+            width: 450px;
+            height: 290px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            padding: 10px 25px;
+            border-radius: 10px;
+        }
+        .step-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 110px;
+            position: relative;
+            z-index: 1;
+        }
+        .step-container::before{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #ccc;
+            z-index: -2;
+        }
+        .bar{
+            position: absolute;
+            width: 0%;
+            background-color: #e31e63;
+            height: 2px;
+            z-index: -1;
+            transition: 0.6s;
+        }
+        .steps{
+            width: 22px;
+            height: 22px;
+            border-radius: 100%;
+            background-color: #ccc;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.6s;
+        }
+        .steps.active{
+            border: 1px solid #e31e63;
+        }
+        .step{
+            margin: 20px 0;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            text-transform: uppercase;
+        }
+        .step-block{
+            width: 100%;
+            display: none;
+        }
+        .button-box{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        button{
+            border: 1px solid #ccc;
+            outline: none;
+            background: #555;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px 30px;
+            border-radius: 8px;
+            transition: 0.6s;
+        }
+        button.disable{
+            cursor: not-allowed;
+            background-color: #ccc;
+        }
+        button.disable:hover{
+            background-color: #ccc;
+            border: none;
+        }
+        button:hover{
+            background-color: blue;
+            border: 1px solid #000;
+        }
+        .step-block.checked{
+            display: block !important;
+        }
+        .mainBlock{
+            position: fixed;
+            background-color: #0b0423;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+        }
+        .alert {
+    width: 400px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+        .alert h2 {
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 21px;
+}
+        .close{
+            font-size: 15px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="step-container">
+        <div class="bar"></div>
+        <div class="steps active" data-tab="one">1</div>
+        <div class="steps" data-tab="two">2</div>
+        <div class="steps" data-tab="three">3</div>
+        <div class="steps" data-tab="four">4</div>
+    </div>
+
+    <div class="step">
+        <div class="step-block checked" id="one">one</div>
+        <div class="step-block" id="two">two</div>
+        <div class="step-block" id="three">three</div>
+        <div class="step-block" id="four">four</div>
+    </div>
+
+    <div class="button-box">
+        <button type="button" class="disable" id="prev">Previous</button>
+        <button type="button" id="next">Next</button>
+    </div>
+    </div>
+
+
+    <script>
+        const stepBar = document.querySelectorAll('.steps');
+        const prevEl = document.getElementById('prev');
+        const nextEl = document.getElementById('next');
+        const bar = document.querySelector('.bar');
+        const stepBlocks = document.querySelectorAll('.step-block');
+
+        let stepCount = 1;
+
+        nextEl.addEventListener('click', function(){
+                stepCount++;
+            if(stepCount > stepBar.length){
+                stepCount = stepBar.length;
+                showAlert();
+            }
+            update();
+        });
+        prevEl.addEventListener('click', function(){
+                stepCount--;
+            if(stepCount < 1){
+                stepCount = 1;
+            }
+            update();
+        });
+
+        function update(){
+            stepBar.forEach((steps, index)=>{
+                if(stepCount > index){
+                    steps.classList.add('active');
+                }else{
+                    steps.classList.remove('active');
+                }
+            });
+
+            const actives = document.querySelectorAll('.active');
+
+            bar.style.width = ((actives.length - 1) / (stepBar.length - 1) * 100 + "%");
+
+            if(stepCount === 4){
+                nextEl.type = 'submit';
+            }else{
+                nextEl.type = 'button';
+            }
+            if(stepCount === 1){
+                prevEl.classList.add('disable');
+            }else{
+                prevEl.classList.remove('disable');
+            }
+
+            stepBlocks.forEach((steps, indx)=>{
+                if(indx === stepCount - 1){
+                    steps.classList.add('checked');
+                }else{
+                    steps.classList.remove('checked');
+                }
+            });
+        }
+
+
+        function showAlert(){
+            const mainDiv = document.createElement('div');
+            mainDiv.classList.add('mainBlock');
+
+            
+
+
+            const alertDiv = document.createElement('div');
+            alertDiv.classList.add('alert');
+
+            const title = document.createElement('h2');
+            title.textContent = 'Your information has been securely saved. You can now restart the process.';
+
+            const span = document.createElement('span');
+            span.classList.add('close');
+            span.innerHTML = '❌';
+
+            document.body.appendChild(mainDiv);
+
+            mainDiv.appendChild(alertDiv);
+            alertDiv.appendChild(span);
+            alertDiv.appendChild(title);
+
+            span.addEventListener('click', function(){
+                mainDiv.remove();
+                stepCount = 1;
+                update();
+            });
+
+        }
+
+
+
+    </script>
+    
+</body>
+</html>
