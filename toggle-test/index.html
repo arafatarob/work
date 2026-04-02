@@ -86,25 +86,28 @@
     </label>
     
     <script>
-        const toggle =  document.getElementById('toggle');
-        const body =  document.body;
+    const toggle = document.getElementById('toggle');
+    const body = document.body;
 
-        toggle.addEventListener('change', ()=>{
-            body.classList.toggle('darkMode');
+    // ১. পেজ লোড হওয়ার সময় আগের সেভ করা থিম চেক করা
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'darkMode') {
+        body.classList.add('darkMode');
+        toggle.checked = true; // টগল বাটনটি অন রাখা
+    }
 
-            if(body.classList.contains === 'darkMode'){
-                localStorage.setItem('theme', 'darkMode');
-            }else{
-                localStorage.setItem('theme', 'lightMode');
-            }
+    // ২. ক্লিক করলে থিম পরিবর্তন এবং সেভ করা
+    toggle.addEventListener('change', () => {
+        body.classList.toggle('darkMode');
 
-            if(localStorage.setItem('theme') === 'darkMode'){
-                body.classList.add('darkMode');
-                toggle.checked = true;
-            }
-        });
-        
-    </script>
+        // চেক করা হচ্ছে darkMode ক্লাসটি আছে কি না
+        if (body.classList.contains('darkMode')) {
+            localStorage.setItem('theme', 'darkMode');
+        } else {
+            localStorage.setItem('theme', 'lightMode');
+        }
+    });
+</script>
     
 </body>
 </html>
