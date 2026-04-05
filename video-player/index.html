@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Custom Video Player</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; background: #1a1a1a; color: white; }
+        
+        .player-container {
+            width: 700px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-top: 50px;
+        }
+
+        video { width: 100%; display: block; }
+
+        .controls {
+            padding: 15px;
+            background: rgba(30, 30, 30, 0.9);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Progress Bar Styling */
+        .progress-container { width: 100%; margin-bottom: 10px; }
+        input[type="range"] { width: 100%; cursor: pointer; }
+
+        .btn-group { display: flex; gap: 8px; align-items: center; width: 100%; justify-content: space-between; }
+        
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button:hover { background-color: #c0392b; }
+
+        .time-display { font-size: 14px; font-family: monospace; }
+        
+        select, input[type="range"].volume-slider {
+            background: #333;
+            color: white;
+            border: 1px solid #555;
+            padding: 5px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="player-container">
+    <video id="myVideo">
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <div class="controls">
+        <div class="progress-container">
+            <input type="range" id="progressBar" value="0" max="100">
+        </div>
+
+        <div class="btn-group">
+            <div>
+                <button onclick="playPause()" id="playBtn">Play</button>
+                <button onclick="restart()">Stop/Restart</button>
+                <span class="time-display"><span id="currentTime">0:00</span> / <span id="durationText">0:00</span></span>
+            </div>
+
+            <div>
+                <label>Vol:</label>
+                <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.1" value="1">
+                
+                <select id="speedSelect" onchange="changeSpeed()">
+                    <option value="0.5">0.5x</option>
+                    <option value="1" selected>Normal</option>
+                    <option value="1.5">1.5x</option>
+                    <option value="2">2x</option>
+                </select>
+
+                <button onclick="toggleFullScreen()">[ ]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const video = document.getElementById("myVideo");
+    const playBtn = document.getElementById("playBtn");
+    const progressBar = document.getElementById("progressBar");
+    const currentTimeText = document.getElementById("currentTime");
+    const durationText = document.getElementById("durationText");
+    const volumeSlider = document.getElementById("volumeSlider");
+    const speedSelect = document.getElementById("speedSelect");
+
+    // 1. Play & Pause
+    function playPause() {
+        if (video.paused) {
+            video.play();
+            playBtn.innerText = "Pause";
+        } else {
+            video.pause();
+            playBtn.innerText = "Play";
+        }
+    }
+
+    // 2. Update Progress Bar & Timer
+    video.addEventListener("timeupdate", () => {
+        // Progress Bar update
+        const percentage = (video.currentTime / video.duration) * 100;
+        progressBar.value = percentage;
+
+        // Current time text update
+        let currentMins = Math.floor(video.currentTime / 60);
+        let currentSecs = Math.floor(video.currentTime % 60);
+        if (currentSecs < 10) currentSecs = "0" + currentSecs;
+        currentTimeText.innerText = `${currentMins}:${currentSecs}`;
+    });
+
+    // 3. Seek Video (Progress bar e click korle video seikhane jabe)
+    progressBar.addEventListener("input", () => {
+        const seekTime = (progressBar.value / 100) * video.duration;
+        video.currentTime = seekTime;
+    });
+
+    // 4. Load Metadata (Duration set korar jonno)
+    video.addEventListener("loadedmetadata", () => {
+        let durationMins = Math.floor(video.duration / 60);
+        let durationSecs = Math.floor(video.duration % 60);
+        if (durationSecs < 10) durationSecs = "0" + durationSecs;
+        durationText.innerText = `${durationMins}:${durationSecs}`;
+    });
+
+    // 5. Volume Control
+    volumeSlider.addEventListener("input", (e) => {
+        video.volume = e.target.value;
+    });
+
+    // 6. Playback Speed
+    function changeSpeed() {
+        video.playbackRate = speedSelect.value;
+    }
+
+    // 7. Fullscreen
+    function toggleFullScreen() {
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) { /* Safari */
+            video.webkitRequestFullscreen();
+        }
+    }
+
+    // 8. Restart
+    function restart() {
+        video.currentTime = 0;
+        video.pause();
+        playBtn.innerText = "Play";
+    }
+</script>
+
+</body>
+</html>

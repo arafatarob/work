@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #output{
+            border: 2px solid red;
+            width: 30em;
+            height: 2em;
+            border-radius: 10px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output">
+
+
+
+    </div>
+    
+
+    <script>
+
+        const output = document.getElementById('output');
+
+        document.addEventListener('keydown', (e)=>{
+            let message;
+
+            switch(e.key){
+                case 'ArrowUp' : 
+                    message = 'Arrow Up';
+                    break;
+                case 'ArrowDown' : 
+                    message = 'Arrow Down';
+                    break;
+                case 'Enter' : 
+                    message = 'Enter';
+                    break;
+                case ' ' :   
+                    message = 'Space';
+                    break;
+                default : 
+                    message = `you pressed ${e.key} `;  
+
+            }
+                    output.textContent = message;
+
+
+        } );
+        
+    </script>
+</body>
+</html>
