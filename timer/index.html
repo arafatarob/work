@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>timer</title>
+    <style>
+        body{
+            background: #fff;
+        }
+        .timer{
+            display: flex;
+    gap: 10px;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5); /* Glassmorphism */
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    text-shadow: 0 0 10px #00fff2;
+    justify-content: center;
+    align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="timer">
+        <div id="day">2 days</div>
+        <div id="hour">12 hours</div>
+        <div id="minute">30 minutes</div>
+        <div id="second">0 seconds</div>
+    </div>
+
+    <script>
+
+        const offerEndedTime = new Date('April 10, 2026 24:00:00');
+        
+        
+        const timer = setInterval(function(){
+            const now = new Date().getTime();
+
+        const distance = offerEndedTime - now;
+
+        let day = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hour = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minute = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let second = Math.floor((distance % (1000 * 60)) / (1000));
+
+        
+// Step 1: Age 0 jog korar logic apply korun
+        day = (day < 10) ? "0" + day : day;
+        hour = (hour < 10) ? "0" + hour : hour;
+        minute = (minute < 10) ? "0" + minute : minute;
+        second = (second < 10) ? "0" + second : second;
+
+
+        document.getElementById('day').innerText = day + ' days';
+        document.getElementById('hour').innerText = hour + ' hours';
+        document.getElementById('minute').innerText = minute + ' minutes';
+        document.getElementById('second').innerText = second + ' seconds';
+
+       
+// Shomoy sesh hoye gele stop korar jonno
+        if (distance < 0) {
+            clearInterval(timer);
+            document.querySelector('.timer').innerText = "Offer Expired!";
+        }
+        
+        
+
+
+
+
+        }, 1000);
+
+    </script>
+    
+</body>
+</html>
