@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image brightness test</title>
+    <style>
+        div{
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="range" name="brightness" id="brightness" min="0" max="200" value="50">
+
+    <input type="range" name="backgroundColor" id="background" min="0" max="255" value="255">
+
+    <img src="unnamed.png" alt="">
+
+    <div>
+        <span id="slider">50</span>
+    </div>
+
+    <div>
+        <span id="backVal">255</span>
+    </div>
+
+
+    <script>
+        const brighness = document.getElementById('brightness');
+        const backgroundEl = document.getElementById('background');
+        const body = document.body;
+        const slider = document.getElementById('slider');
+        const backVal = document.getElementById('backVal');
+        const img = document.querySelector('img');
+
+        backgroundEl.addEventListener('input', ()=>{
+            let val = backgroundEl.value;
+            backVal.textContent = val;
+            document.body.style.background = `rgb(${val}, ${val}, ${val})`;
+        })
+
+        brighness.addEventListener('input', function(e){
+            const track = e.target.value;
+            slider.textContent = track;
+            img.style.filter = `brightness(${track}%)`;
+        });
+    </script>
+    
+</body>
+</html>
