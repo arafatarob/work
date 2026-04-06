@@ -1,0 +1,77 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>appended div</title>
+    <style>
+        body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+    </style>
+</head>
+
+<body>
+
+    <div id="appendedDiv"></div>
+
+    <script>
+
+
+
+
+
+        const appendedDiv = document.getElementById('appendedDiv');
+
+        const newdiv = `<div class="range-slider">
+        <input type="range" name="range" id="range" min="0" max="100" step="1" value="0">
+
+        <br><br><br><br><br>
+
+        <div> result is :
+            <span id="result">
+
+            </span>
+        </div>
+
+
+        <div class="total">
+            <input type="hidden" name="total" value="0" id="total">
+            <div id="display">
+                0
+            </div>
+        </div>
+    </div>`;
+
+    appendedDiv.insertAdjacentHTML('beforeend', newdiv);
+
+
+            // Range slider function
+
+const range = document.getElementById('range');
+const result = document.getElementById('result');
+const total = document.getElementById('total');
+const display = document.getElementById('display');
+
+
+let totalResult = 0;
+
+result.innerHTML = range.value;
+
+
+
+range.addEventListener('input', ()=>{
+    const val = Number(range.value);  
+    result.innerHTML = val;
+    const finalSum = val + totalResult;
+    total.value = finalSum;
+    display.innerText = finalSum;
+});
+    </script>
+</body>
+
+</html>
