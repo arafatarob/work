@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background: #0b0423;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #clock{
+            width: 400px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            padding: 0 80px;
+            gap: 20px;
+            background: #e91e63;
+            box-shadow: 0 0 3px rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        .timer{
+            font-size: 30px;
+            line-height: 50px;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 0 3px rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: #fff;
+            text-shadow: 0 0 10px #00fff2;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="clock">
+        <div class="timer" id="hour">00</div>
+        <div class="timer" id="minute">00</div>
+        <div class="timer" id="second">00</div>
+        <div class="timer" id="ampm">AM</div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const clockTimer = setInterval(function(){
+            const now = new Date();
+            let hour = now.getHours();
+            let minute = now.getMinutes();
+            let seconds = now.getSeconds();
+
+            let ampm = hour >= 12 ? "PM" : "AM";
+            hour = hour % 12;
+            hour = hour ? hour : 12;
+            
+            let displayHour = (hour<10) ? "0" + hour : hour;
+            minute = (minute<10) ? "0" + minute : minute;
+            seconds = (seconds<10) ? "0" + seconds : seconds;
+
+
+
+            document.getElementById('hour').innerText = displayHour;
+            document.getElementById('minute').innerText = minute;
+            document.getElementById('second').innerText = seconds;
+            document.getElementById('ampm').innerText = ampm;
+        }, 1000); 
+        });
+    </script>
+    
+</body>
+</html>

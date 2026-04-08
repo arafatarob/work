@@ -18,17 +18,67 @@
     right: 16px;
     top: 0;
 }
+ul li{
+    list-style-type: none;
+    cursor: pointer;
+}
+ul li.active{
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+.extra-item{
+    width: 0;
+    opacity: 0;
+    height: 0;
+}
+.boxCheck {
+    position: relative;
+    display: flex;
+    padding: 0 19px;
+    height: 25px;
+}
+
+.rounded::before{
+    content: "+";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #eee;
+    left: 0;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    cursor: pointer;
+}
+.rounded.checked{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #eee;
+    left: 0;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+}
+.rounded.checked::before{
+    content: "✔️";
+}
 
     </style>
 </head>
 <body>
 
-    <input type="range" name="input" id="input" min="20" max="100" value="20">
+    <input type="range" name="input" id="input" min="0" max="1000" value="0">
 
     <div id="output">
         <input type="hidden" name="output" id="sum">
         <div id="result">
-            Total : 20 $
+            Slider Total : 0 $
         </div>
     </div>
 
@@ -36,22 +86,33 @@
 
     <div class="extra-container">
         <div class="extra">
-            <label>
-                <input type="checkbox" name="extra" id="extraItem" class="extra-item" value="15">
-                fast delivery (+$15)
+            <label class="boxCheck">
+                <input type="checkbox" name="extra" class="extra-item" value="20">
+                <div class="rounded"></div>
+                fast delivery (+$20)
             </label>
-            <label>
-                <input type="checkbox" name="extra" id="extraItem" class="extra-item" value="30">
+            <label class="boxCheck">
+                <input type="checkbox" name="extra" class="extra-item" value="30">
+                
+                <div class="rounded"></div>
                 fast working (+$30)
             </label>
-            <label>
-                <input type="checkbox" name="extra" id="extraItem" class="extra-item" value="30">
+            <label class="boxCheck">
+                <input type="checkbox" name="extra" class="extra-item" value="30">
+                                <div class="rounded"></div>
                  support (+$25)
             </label>
         </div>
     </div>
 
+
+    <div id="subTotal">
+        Total : 0 $
+    </div>
+
     <br><br>
+
+    <input type="email" name="email" id="email" placeholder="enter email">
 
     <input type="password" name="password" id="password" placeholder="enter password">
     <label id="box">
@@ -93,11 +154,33 @@
             if(inputItem.value === ''){
                 alert('enter a task');
             }else{
-                listContainer.innerHTML += `<li>${inputItem.value}</li>`;
-                inputItem.value = '';
+                const li = document.createElement('li');
+                li.innerHTML = inputItem.value;
+                listContainer.appendChild(li);
+
+                const span = document.createElement('span');
+                span.innerHTML = '❌';
+                li.appendChild(span);            
             }
+
+            
+
+            inputItem.value = '';
             todoSave();
         };
+
+        listContainer.addEventListener('click', function(e){
+            if(e.target.tagName === 'LI'){
+                e.target.classList.toggle('active');
+            todoSave();
+            }
+            else if(e.target.tagName === 'SPAN'){
+                e.target.parentElement.remove();
+            todoSave();
+            }
+        })
+
+        
 
         function todoSave(){
             localStorage.setItem('data', listContainer.innerHTML);
@@ -116,6 +199,7 @@
 
 
         const password = document.getElementById('password');
+        const email = document.getElementById('email');
         const checkbox = document.getElementById('checkbox');
         const check = document.getElementById('check');
         const submit = document.getElementById('submit');
@@ -123,6 +207,7 @@
         const slider = document.getElementById('input');
         const hiddenValue = document.getElementById('sum');
         const result = document.getElementById('result');
+        const total = document.getElementById('subTotal');
 
         function updateSum(){
             const val = parseInt(slider.value);
@@ -133,16 +218,29 @@
                     sum += parseInt(item.value);
                 }
             });
+            result.innerHTML = "Slider Total : " + val + " $";
             const finalSum = val + sum;
             hiddenValue.value = finalSum;
 
-            result.innerHTML = `Total : ${finalSum} $`;
+            total.innerHTML = `Total : ${finalSum} $`;
 
         }
         slider.addEventListener('input', updateSum);
 
         extraItems.forEach(checkBox=>{
-            checkBox.addEventListener('change', updateSum);
+            checkBox.addEventListener('change', function(){
+            updateSum();
+
+            const roundedDiv = this.nextElementSibling;
+
+
+            if(this.checked){
+                roundedDiv.classList.add('checked');
+            }else{
+                
+                roundedDiv.classList.remove('checked');
+            }
+        })
         })
 
 
@@ -156,10 +254,27 @@
             }
         });
 
-        submit.addEventListener('click', function(){
-            if(password.value === ''){
+        submit.addEventListener('click', function(e){
+            e.preventDefault();
+            const passwordVal = password.value;
+            const emailVal = email.value;
+            if(passwordVal === ''){
                 alert('enter a password')
             }
+            if(passwordVal.length < 4 || passwordVal.length > 20){
+                alert('password must be between 4 and 8 characters')
+            }
+
+            else if(emailVal.value === ''){
+                alert('enter an email')
+            }
+
+            else if(emailVal.indexOf('@') === -1 || emailVal.indexOf('.') === -1){  
+                alert('enter a valid email')
+            }
+            else {
+        alert('All good! Form submitted.');
+    }
         });
         
 

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Timer</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background: #0b0423;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+        #clock{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            padding: 20px 40px;
+            gap: 15px;
+            background: #e91e63; /* কুইজের জন্য গোলাপি/লাল থিম */
+            box-shadow: 0 0 15px rgba(233, 30, 99, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .timer-box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .timer{
+            font-size: 40px;
+            font-weight: bold;
+            min-width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .label{
+            color: #fff;
+            font-size: 12px;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .separator{
+            font-size: 30px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        /* সময় শেষ হয়ে আসলে এই ক্লাসটি যোগ হবে */
+        .danger {
+            background: #ff0000 !important;
+            box-shadow: 0 0 20px #ff0000;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="color: white; margin-bottom: 20px;">Quiz Remaining Time</h2>
+
+    <div id="clock">
+        <div class="timer-box">
+            <div class="timer" id="minute">00</div>
+            <div class="label">Min</div>
+        </div>
+        
+        <div class="separator">:</div>
+
+        <div class="timer-box">
+            <div class="timer" id="second">00</div>
+            <div class="label">Sec</div>
+        </div>
+    </div>
+
+    <script>
+        // ১. কুইজের সময় সেট করুন (সেকেন্ডে) - এখানে ২ মিনিট (১২০ সেকেন্ড) দেওয়া হয়েছে
+        let timeLeft = 120; 
+
+        const minuteElement = document.getElementById('minute');
+        const secondElement = document.getElementById('second');
+        const clockBox = document.getElementById('clock');
+
+        const quizTimer = setInterval(function() {
+            // ২. মিনিট এবং সেকেন্ড ক্যালকুলেশন
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+
+            // ৩. ০ যোগ করার লজিক
+            let displayMin = (minutes < 10) ? "0" + minutes : minutes;
+            let displaySec = (seconds < 10) ? "0" + seconds : seconds;
+
+            // ৪. স্ক্রিনে দেখানো
+            minuteElement.innerText = displayMin;
+            secondElement.innerText = displaySec;
+
+            // ৫. সতর্কতা লজিক (১০ সেকেন্ড বাকি থাকলে লাল হবে)
+            if (timeLeft <= 10) {
+                clockBox.classList.add('danger');
+            }
+
+            // ৬. সময় শেষ হলে টাইমার বন্ধ করা
+            if (timeLeft <= 0) {
+                clearInterval(quizTimer);
+                minuteElement.innerText = "00";
+                secondElement.innerText = "00";
+                alert("Time's Up! Your quiz is being submitted.");
+                // এখানে ফর্ম সাবমিট করার কোড লিখতে পারেন
+            }
+
+            timeLeft--; // প্রতি সেকেন্ডে ১ কমবে
+        }, 1000);
+    </script>
+    
+</body>
+</html>

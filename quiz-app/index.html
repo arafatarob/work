@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/brands.min.css" integrity="sha512-WxpJXPm/Is1a/dzEdhdaoajpgizHQimaLGL/QqUIAjIihlQqlPQb1V9vkGs9+VzXD7rgI6O+UsSKl4u5K36Ydw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/svg.min.css" integrity="sha512-st1GzIoIPUBkxblWvRRTd+MkVD9R7hJpZ8Ea1er9AuDVRtFQjhtDtnGwoFXTQYfS1KoXy2QfQmCQicMxVLwzog==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <div class="quiz_button">
+        <button class="start_button"> start quiz </button>
+    </div>
+
+    
+    <div class="quiz_app inactive">
+
+        
+        <h1>Quiz App</h1>
+
+        <div class="quiz_box">
+
+            <h2 class="qus_text">
+                <!-- 1. What does HTML stand for ? -->
+            </h2>
+
+            <div class="options">
+                <!-- <div class="option">Hyper Text Multiple Language</div>
+                <div class="option">Hyper Text Preprocessor</div>
+                <div class="option">Hyper Tool Multi Language</div>
+                <div class="option">Hyper Text Markup Language</div> -->
+            </div>
+
+        </div>
+
+        <div class="quiz_footer">
+
+            <div class="footer_left">
+                <!-- 1 of 5 Question -->
+            </div>
+            <div class="footer_right">
+                <button class="next_button inactive">
+                    next
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="result_box inactive">
+            <h2>Result</h2>
+
+            <div class="result">
+                <div class="result_inner">
+                    <span>total question</span> <div class="divide">:</div> <div id="totalQuestion"></div>
+                </div>
+                <div class="result_inner">
+                    <span>right answer</span> <div class="divide">:</div> <div id="rightAnswer"></div>
+                </div>
+                <div class="result_inner">
+                    <span>wrong answer</span> <div class="divide">:</div> <div id="wrongAnswer"></div>
+                </div>
+                <div class="result_inner">
+                    <span>percentage</span> <div class="divide">:</div> <div id="percent"></div>
+                </div>
+            </div>
+
+            <div class="button_box">
+                <button id="againQuiz">again quiz</button>
+                <button id="exit">exit</button>
+            </div>
+    </div>
+    
+
+    <script src="./js/questions.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
