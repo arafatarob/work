@@ -37,7 +37,7 @@ function showQuestions(q_index){
 
     var option_statement = "";
 
-    for(var i =0; i < questions.length - 1; i++){
+    for(var i =0; i < questions.length - 16; i++){
         option_statement += `<div class="option">${questions[q_index].options[i]}</div>`;
     }
 
@@ -125,6 +125,7 @@ function reset(){
     questionIndex = 0;
     right_answers = 0;
     wrong_answers = 0;
+    next_button.innerText = "Next Question";
     showQuestions(questionIndex);
 }
 
