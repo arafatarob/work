@@ -180,6 +180,10 @@ clearInterval(setTimer);
             clearInterval(setTimer);
             minit.innerHTML = "00";
             second.innerHTML = "00";
+            quiz_app.classList.add('inactive');
+            startBtn.classList.add('inactive');
+            result_box.classList.remove('inactive');
+
         }
 
     }, 1000);
