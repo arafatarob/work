@@ -37,7 +37,7 @@ function showQuestions(q_index){
 
     var option_statement = "";
 
-    for(var i =0; i < questions.length - 16; i++){
+    for(var i =0; i < questions[q_index].options.length; i++){
         option_statement += `<div class="option">${questions[q_index].options[i]}</div>`;
     }
 
