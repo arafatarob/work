@@ -19,6 +19,10 @@
     pointer-events: none;
 }
 
+.dark{
+    background: #000 !important;
+}
+
 body{
     background: var(--background-color);
     width: 100%;
@@ -26,6 +30,85 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--dark-blue);
+    min-width: 100%;
+    height: 60px;
+    line-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    padding: 0 35px;
+}
+
+header .timer{
+    font-size: 25px;
+    color: #fff;
+    display: flex;
+    gap: 20px;
+}
+
+header .heading h1{
+    color: var(--white-color);
+    font-size: 36px;
+    line-height: 50px;
+    text-align: center;
+}
+
+#toggleBox{
+    position: relative;
+}
+
+#toggle{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider{
+    position: absolute;
+    width: 80px;
+    height: 35px;
+    background-color: #ccc;
+    border-radius: 40px;
+    right: 0;
+    top: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    transition: transform background-color 0.6s;
+}
+
+.slider::before {
+    content: "\f185";
+    position: absolute;
+    left: 5px;
+    top: 4px;
+    font-size: 16px;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    transition: transform 0.6s;
+    width: 27px;
+    height: 27px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+}
+
+#toggle:checked + .slider{
+    background-color: #00B9F7;
+}
+
+#toggle:checked + .slider::before{
+    content: "\f186";
+    transform: translateX(45px);
 }
 
 .quiz_button button{
@@ -36,7 +119,7 @@ body{
     font-weight: 600;
     border: 1px solid #ccc;
     cursor: pointer;
-    transition: background-color 0.6s;
+    transition: transform background-color 0.6s;;
 
     animation: InOut 0.8s infinite alternate 1s;
 }
@@ -64,12 +147,7 @@ body{
     border: 1px solid var(--white-color);
 }
 
-.quiz_app h1{
-    color: var(--white-color);
-    font-size: 36px;
-    line-height: 50px;
-    text-align: center;
-}
+
 
 .quiz_box h2{
     color: var(--white-color);
@@ -226,4 +304,41 @@ body{
 .button_box button:hover{
     background-color: var(--background-color);
     color: #fff;
+}
+
+
+@media screen and (max-width: 360px){
+    header {
+    padding: 0 10px !important;
+}
+header .timer {
+    font-size: 15px !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    line-height: 2;
+}
+header .heading h1 {
+    font-size: 14px !important;
+    position: absolute;
+    left: 55%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.quiz_app {
+    width: 340px !important;
+    padding: 12px !important;
+}
+.quiz_box h2 {
+    font-size: 18px !important;
+}
+.footer_left {
+    font-size: 17px !important;
+}
+.result_box {
+    width: 340px !important;
+}
+.footer_right .next_button {
+    font-size: 13px !important;
+    padding: 5px 12px !important;
+}
 }

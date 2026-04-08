@@ -10,15 +10,34 @@
 </head>
 <body>
 
+    <header>
+        <div class="timer">
+            <div class="time">
+                Total Timer : 10:00
+            </div>
+            <div>Time Left: <span id="minute">00</span> : <span id="seconds">00</span></div>
+        </div>
+        <div class="heading">
+            <h1>Quiz App</h1>
+        </div>
+        <div class="toggle-button">
+            <label id="toggleBox">
+                <input type="checkbox" name="toggle" id="toggle">
+                <div class="slider"></div>
+            </label>
+        </div>
+
+    </header>
+
     <div class="quiz_button">
-        <button class="start_button"> start quiz </button>
+        <button class="start_button" onclick="onTimer()"> start quiz </button>
     </div>
 
     
     <div class="quiz_app inactive">
 
         
-        <h1>Quiz App</h1>
+        
 
         <div class="quiz_box">
 
@@ -45,7 +64,6 @@
                     Next Question
                 </button>
             </div>
-
         </div>
 
     </div>
@@ -66,6 +84,9 @@
                 </div>
                 <div class="result_inner">
                     <span>percentage</span> <div class="divide">:</div> <div id="percent"></div>
+                </div>
+                <div class="result_inner">
+                    <span>Time</span> <div class="divide">:</div> <div id="totalTime"></div>
                 </div>
             </div>
 
