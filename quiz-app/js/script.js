@@ -190,7 +190,7 @@ clearInterval(setTimer);
 }
 
 
-const timerText = document.getElementById('totalTime');
+
 
 
 
