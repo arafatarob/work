@@ -64,10 +64,28 @@ header .timer{
 }
 
 header .heading h1{
-    color: var(--white-color);
+    color: transparent;
     font-size: 36px;
     line-height: 50px;
     text-align: center;
+    background: linear-gradient(90deg, #f8ff00 0%, #3ad59f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 200% auto;
+
+    animation:  background 3s linear infinite;
+}
+
+@keyframes background {
+    0%{
+        background-position: 0% center;
+    }
+    50%{
+        background-position: 100% center;
+    }
+    100%{
+        background-position: 200% center;
+    }
 }
 
 #toggleBox{
