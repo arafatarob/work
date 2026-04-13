@@ -124,7 +124,7 @@ next_button.onclick=()=>{
 
     let totalSeconds = Math.floor(finalTime / 1000);
     let minutesSpent = Math.floor(totalSeconds / 60);
-    let secondsSpent = totalSeconds % 60;
+    let secondsSpent = minutesSpent % 60;
 
     let totalTime = (minutesSpent < 10 ? "0" + minutesSpent : minutesSpent) + ":" + 
                 (secondsSpent < 10 ? "0" + secondsSpent : secondsSpent);

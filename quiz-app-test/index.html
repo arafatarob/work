@@ -1,0 +1,112 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz app</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/brands.min.css" integrity="sha512-WxpJXPm/Is1a/dzEdhdaoajpgizHQimaLGL/QqUIAjIihlQqlPQb1V9vkGs9+VzXD7rgI6O+UsSKl4u5K36Ydw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/svg.min.css" integrity="sha512-st1GzIoIPUBkxblWvRRTd+MkVD9R7hJpZ8Ea1er9AuDVRtFQjhtDtnGwoFXTQYfS1KoXy2QfQmCQicMxVLwzog==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <div class="start_btn">
+        <div class="input">
+            <input type="text" name="name" id="name" required>
+            <label id="labelName" for="name">Enter your Name</label>
+        </div>
+        <button id="startBtn">start quiz</button>
+    </div>
+
+    <header>
+        <div class="left_side">
+            <div class="total_timer">
+                total timer : 25 : 00
+            </div>
+            <div class="timer">
+                Time Left :
+                <div class="minutes">00</div>
+                <div class="divider">:</div>
+                <div class="seconds">00</div>
+            </div>
+        </div>
+        <div class="center_side">
+            <h1>quiz - app</h1>
+        </div>
+        <div class="right_side">
+            <label id="toggle_box">
+                <input type="checkbox" name="toggle" id="toggle">
+                <div class="slider"></div>
+            </label>
+        </div>
+    </header>
+
+    <div class="quiz_container inactive">
+
+        <h3 class="welcome">Welcome, <span id="inputName"></span> 
+            in our quiz app
+        </h3>
+
+        <div class="quiz_box">
+            <div class="question_text">
+                <!-- 1. What does HTML stand for? -->
+            </div>
+            <div class="options">
+                <!-- <div class="option">
+                    Hyper Text Multiple Language
+                </div>
+                <div class="option">
+                    Hyper Text Preprocessor
+                </div>
+                <div class="option">
+                    Hyper Tool Multi Language
+                </div>
+                <div class="option">
+                    Hyper Text Markup Language
+                </div> -->
+            </div>
+        </div>
+        <div class="quiz_footer">
+            <div class="footer_left">
+                <span id="q_index"></span> of <span id="q_number"></span> questions
+            </div>
+            <div class="footer_right">
+                <button id="nextBtn" class="inactive">
+                    next question
+                </button>
+            </div>
+        </div>
+        <div class="typing">
+        <h2>Developed by md arafat hossain</h2>
+    </div>
+    </div>
+
+    <div class="quiz_result inactive">
+        <h2>quiz result</h2>
+        <div class="result_container">
+            <h2>total question : <span id="totalQuestion"></span></h2>
+            <h2>right answer : <span id="right"></span></h2>
+            <h2>wrong anser : <span id="wrong"></span></h2>
+            <h2>percentage : <span id="percentage"></span></h2>
+            <h2>time : <span id="time"></span></h2>
+        </div>
+        <div class="result_footer">
+            <button id="quiz">
+                again quiz
+            </button>
+            <button id="exit">
+                exit
+            </button>
+        </div>
+    </div>
+
+    
+
+
+    <script src="./js/questions.js"></script>
+    <script src="./js/custom.js"></script>
+</body>
+
+</html>
