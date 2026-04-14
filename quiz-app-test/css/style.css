@@ -65,6 +65,31 @@ h3.welcome {
     text-align: center;
 }
 
+.topBar{
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed var(--background-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date, .timeToday {
+    display: inline-block;
+    color: #fff;
+    font-size: 20px;
+    line-height: 30px;
+    width: 100%;
+}
+
+.date{
+    text-align: left;
+}
+
+.timeToday{
+    text-align: right;
+}
+
 .input{
     position: relative;
 }
@@ -303,10 +328,10 @@ header .right_side #toggle_box #toggle:checked + .slider::before{
     justify-content: space-between;
     align-items: center;
     padding-top: 25px;
-    border-top: 3px dashed var(--white-color);
+    border-top: 3px dashed var(--background-color);
     margin-top: 30px;
     padding-bottom: 30px;
-    border-bottom: 3px dashed var(--white-color);
+    border-bottom: 3px dashed var(--background-color);
 }
 
 .quiz_footer .footer_left{

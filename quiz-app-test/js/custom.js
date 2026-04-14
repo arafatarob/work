@@ -7,6 +7,7 @@ const quiz_container = document.querySelector('.quiz_container');
 const quiz_result = document.querySelector('.quiz_result');
 const nameEl = document.querySelector('#name');
 const input = document.querySelector('.input');
+const date = document.querySelector('.date');
 const output = document.querySelector('#inputName');
 const quiz = document.querySelector('#quiz');
 const exit = document.querySelector('#exit');
@@ -17,10 +18,12 @@ const percentage = document.querySelector('#percentage');
 const q_number = document.querySelector('#q_number');
 const toggle = document.querySelector('#toggle');
 const time = document.querySelector('#time');
+const timeToday = document.querySelector('.timeToday');
 const body = document.body;
 
 const minit = document.querySelector('.minutes');
 const seconds = document.querySelector('.seconds');
+
 
 
 let questionIndex = 0;
@@ -44,6 +47,34 @@ startBtn.addEventListener('click', function(){
     startTime = new Date();
     onTimer();
 });
+
+function timeDate(){
+    const today = new Date();
+
+const y = today.getFullYear();
+const m = today.getMonth() + 1;
+const d = today.getDate();
+const t = today.getHours();
+const min = today.getMinutes();
+const sec = today.getSeconds();
+
+
+
+let         dateNow   =   (y < 10 ? "0" + y : y);
+            months    =     (m < 10 ? "0" + m : m);
+            days      =     (d < 10 ? "0" + d : d);
+            timeIs      =     (t < 10 ? "0" + t : t);
+
+            let ampm = t >= 12 ? "PM" : "AM";
+
+date.innerText = days + "-" + months + "-" + dateNow;
+timeToday.innerText = timeIs + ":" + (min < 10 ? "0" + min : min) + ":" + (sec < 10 ? "0" + sec : sec) + " " + ampm;
+}
+
+setInterval(timeDate, 1000);
+
+timeDate();
+
 
 
 function questonbox(index){
