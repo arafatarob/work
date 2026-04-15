@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video player</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <div class="video_box">
+        <video id="video">
+            <source src="video.mp4" type="video/mp4">
+        </video>
+
+        <div class="control">
+            <div class="input">
+                <input type="range" name="volume" min="0" max="100" id="durationSllider" value="0">
+            </div>
+            <div class="buttons">
+                <button id="play" onclick="playPause()">play</button>
+                <button id="pause" onclick="restart()">stop / restart</button>
+                <span id="timeDisplay"> <span class="currentTime">00:00</span> / <span class="currentText">00:08</span> </span>
+            </div>
+
+            <div class="volume">
+
+                <label id="labelVol">vol:</label>
+                <input type="range" name="volum" id="volumeSlider" value="1" min="0" max="1" step="0.1">
+
+                <select id="speedSelect" onchange="changeSpeed()">
+                    <option value="0.5">0.5x</option>
+                    <option value="1" selected>Normal</option>
+                    <option value="1.5">1.5x</option>
+                    <option value="2">2x</option>
+                </select>
+
+                <button id="fullScreen" onclick="toggleFullScreen()">[ ]</button>
+
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="./js/custom.js"></script>
+</body>
+</html>

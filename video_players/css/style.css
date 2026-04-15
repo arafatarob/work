@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #1c2481;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video_box{
+    width: 800px;
+    height: 600px;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    position: relative;
+}
+
+.video_box video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+
+
+.control{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 13%;
+    padding: 20px 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.control::before{
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    border-radius: 0 0 8px 8px;
+}
+
+#durationSllider{
+    width: 55%;
+    position: absolute;
+    left: 20px;
+    bottom: 50px;
+    cursor: pointer;
+}
+
+.buttons{
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+
+#volumeSlider{
+    position: absolute;
+    width: 30%;
+    right: 20px;
+    bottom: 50px;
+}
+
+#labelVol{
+    position: absolute;
+    right: 260px;
+    bottom: 50px;
+}
+
+#speedSelect{
+    position: absolute;
+    right: 100px;
+    bottom: 10px;
+}
+
+#fullScreen{
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+}
+
+button, #speedSelect{
+    padding: 4px 25px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #1c2481;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.6s ease-in;
+}
+button:hover{
+    background-color: #fff;
+    border: 2px solid #1c2481;
+}
+
+#currentTime{
+    color: #fff;
+
+}
