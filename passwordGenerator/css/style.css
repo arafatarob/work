@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --ligh-white: #f7edff;
+    --dark-blue: #0b0e23;
+    --orange: #f7a420;
+    --red: #f72020;
+    --green: green;
+    --dark-green: #0C8156;
+    --dark-red: #e91e63;
+}
+
+body{
+    background: var(--dark-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 400px;
+    height: auto;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.container h1{
+    font-size: 38px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.container h1 span{
+    color: var(--dark-green);
+    border-bottom: 4px solid var(--dark-green);
+    margin-top: 8px;
+}
+
+.password-container{
+    width: 100%;
+    height: 40px;
+    padding: 10px 20px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+}
+
+.password-container input{
+    border: none;
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+
+.password-container i{
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.container button{
+    width: 100%;
+    background-color: var(--dark-green);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin: 15px 0 0 0;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ligh-white);
+}
+
+.container button i{
+    font-size: 22px;
+    cursor: pointer;
+}
