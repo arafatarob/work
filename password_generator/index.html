@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>password generator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Generate a <br> <span>Random Password</span></h1>
+        <div class="password_container">
+            <div class="password_box">
+                <input type="text" name="password" id="password" placeholder="generate a strong password">
+                <i onclick="copyPassword()" class="fa-regular fa-copy"></i>
+            </div>
+
+            <button onclick="passwordGenerator()"><i class="fa-solid fa-bolt"></i> generate password</button> 
+        </div>
+    </div>
+    
+
+    <script>
+
+        const passwordBox = document.getElementById('password');
+
+        const lengt = 14;
+
+        const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+        const number = "0123456789";
+        const symbol = "@#$%^&*()_+~|}{[]></-=";
+
+        
+        const pass = upperCase + lowerCase + number + symbol;
+
+        function passwordGenerator(){
+            let password = '';
+
+            password += upperCase[Math.floor(Math.random() * upperCase.length)];
+            password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+            password += number[Math.floor(Math.random() * number.length)];
+            password += symbol[Math.floor(Math.random() * symbol.length)];
+
+
+            while(lengt > password.length){
+                password += pass[Math.floor(Math.random() * pass.length)];
+            }
+
+            passwordBox.value = password;
+        }
+
+        function copyPassword(){
+            passwordBox.select();
+            document.execCommand('copy');
+
+            // Modern way to copy text
+        // navigator.clipboard.writeText(passwordBox.value).then(() => {
+        //     alert("Password copied to clipboard!"); // Ekhane notification show korbe
+        // }).catch(err => {
+        //     console.error('Could not copy text: ', err);
+        // });
+        }
+
+    </script>
+    
+    <script src="https://kit.fontawesome.com/e68d9b315c.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
