@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="slider_wrapper">
+            <div class="left_arrow"><</div>
+
+            <div class="slider">
+                <img src="./img/img-1.jpg" alt="">
+                <img src="./img/img-2.jpg" alt="">
+                <img src="./img/img-3.jpg" alt="">
+                <img src="./img/img-4.jpg" alt="">
+                <img src="./img/img-5.jpg" alt="">
+                <img src="./img/img-6.jpg" alt="">
+            </div>
+
+            <div class="right_arrow">></div>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.querySelector('.slider');
+        const leftArrow = document.querySelector('.left_arrow');
+        const rightArrow = document.querySelector('.right_arrow');
+        const imageWidth = slider.firstElementChild.clientWidth;
+
+        slider.addEventListener('wheel', function(evt){
+            evt.preventDefault();
+            
+            
+            if(evt.deltaY > 0){
+                slider.scrollLeft += imageWidth;
+            }else{
+                slider.scrollLeft -= imageWidth;
+            }
+
+        })
+
+        leftArrow.addEventListener('click', function(){
+            slider.scrollLeft -= 900;
+        })
+        rightArrow.addEventListener('click', function(){
+            slider.scrollLeft += 900;
+        })
+
+    </script>
+    
+</body>
+</html>

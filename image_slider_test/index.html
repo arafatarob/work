@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider Test</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="slider_wrapper">
+            <img id="left_arrow" src="./img/left_arrow.png" alt="">
+            <div class="slider">
+                <span><img src="./img/img-1.jpg" alt=""></span>
+                <span><img src="./img/img-2.jpg" alt=""></span>
+                <span><img src="./img/img-3.jpg" alt=""></span>
+                <span><img src="./img/img-4.jpg" alt=""></span>
+                <span><img src="./img/img-5.jpg" alt=""></span>
+                <span><img src="./img/img-6.jpg" alt=""></span>
+            </div>
+            <img id="right_arrow" src="./img/right_arrow.png" alt="">
+        </div>
+    </div>
+
+    <script>
+        const sliderContainer = document.querySelector('.slider');
+        const leftArrow = document.getElementById('left_arrow');
+        const rightArrow = document.getElementById('right_arrow');
+        const imageWidth = 910;
+
+        sliderContainer.addEventListener('wheel', function(s){
+            s.preventDefault();
+            if(s.deltaY > 0){
+                sliderContainer.scrollLeft += imageWidth;
+            }else{
+                sliderContainer.scrollLeft -= imageWidth;
+            }
+        });
+
+        leftArrow.addEventListener('click', ()=>{
+            sliderContainer.scrollLeft -= imageWidth;
+        })
+
+        rightArrow.addEventListener('click', ()=>{
+            sliderContainer.scrollLeft += imageWidth;
+        })
+
+    </script>
+    
+</body>
+</html>
