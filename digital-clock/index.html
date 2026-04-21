@@ -16,18 +16,22 @@
             align-items: center;
             height: 100vh;
         }
-        #clock{
+        .wrapper{
             width: 400px;
             height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            padding: 0 80px;
-            gap: 20px;
             background: #e91e63;
             box-shadow: 0 0 3px rgba(255, 255, 255, 0.6);
             border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 20px 0px;
+        }
+        #clock{
+            width: 400px;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
         }
         .timer{
             font-size: 30px;
@@ -45,25 +49,40 @@
             color: #fff;
             text-shadow: 0 0 10px #00fff2;
         }
+        #day{
+            font-size: 30px;
+            line-height: 50px;
+            padding: 5px 15px;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 5px #fff, -2px -2px 5px #000;
+        }
     </style>
 </head>
 <body>
 
-    <div id="clock">
-        <div class="timer" id="hour">00</div>
-        <div class="timer" id="minute">00</div>
-        <div class="timer" id="second">00</div>
-        <div class="timer" id="ampm">AM</div>
+    <div class="wrapper">
+        <div id="clock">
+            <div class="timer" id="hour">00</div>
+            <div class="timer" id="minute">00</div>
+            <div class="timer" id="second">00</div>
+            <div class="timer" id="ampm">AM</div>
+        </div>
+        <div id="day">
+            
+        </div>
     </div>
 
 
     <script>
         document.addEventListener('DOMContentLoaded', ()=>{
+        const day = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY" ];
             const clockTimer = setInterval(function(){
             const now = new Date();
             let hour = now.getHours();
             let minute = now.getMinutes();
             let seconds = now.getSeconds();
+            let nowDay = day[now.getDay()];
 
             let ampm = hour >= 12 ? "PM" : "AM";
             hour = hour % 12;
@@ -79,6 +98,7 @@
             document.getElementById('minute').innerText = minute;
             document.getElementById('second').innerText = seconds;
             document.getElementById('ampm').innerText = ampm;
+            document.getElementById('day').innerText = nowDay;
         }, 1000); 
         });
     </script>
